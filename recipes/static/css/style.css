@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+.main{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.background-img{
+    background-image: url(https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.612);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+.hero-section{
+    margin-top: 50px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section h1{
+    color: white;
+}
+
+.hero-section p{
+    /* width: 70%; */
+    margin-top: 15px;
+    color: white;
+}
+
+
+
+
+/* 2nd page  */
+
+.different-cuzine{
+    height: 80vh;
+    width: 100vw;
+    /* margin-top: 70px; */
+    background-color:cadetblue;
+}
+
+.different-cuzine .container{
+    background-color:bisque;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+}
+
+.different-cuzine .container .headings{
+    background-color:crimson;
+}
+
+.food-category{
+    background-color:darksalmon;
+    width: 100%;
+}
+
