@@ -7,31 +7,73 @@
 
 {% block hero-content %}
 <div class="container mt-5 p-2 text-white">
+
+    <!-- user name  -->
     <h2 class="display-5 ">Hello User!</h2>
 
-    <div class="card col-8 mx-auto m-5 p-4">
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
 
+    <!--form start-->
+    <div class="container mt-5 mb-5">
+        <form class="col-7 mx-auto card p-4 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Add Your Recipes 🍲</h2>
+            <h5 class="mt-1">Let your passion for cooking inspire others. Share your recipe today!</h5>
+            <hr class="mb-4">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+                <input name="recp_name" required type="texxt" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+                <textarea name="recp_desp" required class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
+                <input name="recp_img" type="file" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Share Recipe</button>
+        </form>
     </div>
+    <!--form ends-->
+
+    {{ recipes }}
 
 </div>
 {% endblock %}
 
 
 {% block main-content %}
+
+<div class="container mt-5 p-4 bg-body-tertiary">
+    <h2 class="display-6 mb-4">Your Recipes</h2>
+
+    <div class="row p-3 ">
+        {% if recipes %}
+
+            {% for recipe in recipes %}
+                <div class="card mb-5 ms-4 p-2" style="width: 18rem;">
+                    <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                        style="height: 9rem; object-fit: cover; object-position: center;" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{recipe.recp_name}}</h5>
+                        <p class="card-text" style="text-overflow: ellipsis; height: 5rem;">{{recipe.recp_desp}}</p>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-primary">Read</a>
+                            <div class="gap-2">
+                                <a href="#" class="btn btn-warning"><i class="ri-pencil-line"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <h5 class="fs-4">You have not shared any recipes yet!</h5>
+
+        {% endif %}
+    </div>
+
+</div>
+
 {% endblock %}
