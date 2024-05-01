@@ -14,7 +14,7 @@ def users(request):
         recp_img = request.FILES.get('recp_img')
         recp_name = data.get('recp_name')
         recp_desp = data.get('recp_desp')
-        print(recp_name, recp_desp, recp_img)
+        # print(recp_name, recp_desp, recp_img)
 
         # adding to data model
         recipes.objects.create(
@@ -29,3 +29,10 @@ def users(request):
     context = {'recipes': queryset}
     
     return render(request, 'user.html' , {'recipes': queryset})    #5th commit adding users page
+
+
+
+def delete_recp(request, id):
+    queryset = recipes.objects.get(id = id)
+    queryset.delete()
+    return redirect('/user/')
