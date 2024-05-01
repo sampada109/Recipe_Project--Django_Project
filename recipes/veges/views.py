@@ -4,4 +4,8 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'base.html')    #4th commit adding function for home page
+    return render(request, 'home.html')    #4th commit adding function for home page
+
+
+def users(request):
+    return render(request, 'user.html')    #5th commit adding users page
