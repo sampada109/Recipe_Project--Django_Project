@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} | Update {% endblock %}
+
+
+{% block hero-content %}
+
+<div class="container">
+    <!-- form start -->
+    <div class="container mt-5 mb-5">
+        <form class="col-7 mx-auto card p-4 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Update Your Recipes 🍲</h2>
+            <h5 class="mt-1">Let your passion for cooking inspire others. Share your recipe today!</h5>
+            <hr class="mb-4">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+                <input name="recp_name" value="{{update_recipe.recp_name}}" required type="texxt" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+                <textarea name="recp_desp" required class="form-control">{{update_recipe.recp_desp}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
+                {% if update_recipe.recp_img %}
+                <div class="mb-2">
+                    <img src="/media/{{ update_recipe.recp_img }}" alt="Current recipe image"
+                        style="max-width: 200px; max-height: 200px;">
+                </div>
+                {% endif %}
+
+                <!-- File input field to allow changing the image -->
+                <input name="recp_img" value="{{update_recipe.recp_img}}" type="file" class="form-control">
+
+                
+            </div>
+            <button type="submit" class="btn btn-success">Update Recipe</button>
+        </form>
+    </div>
+    <!-- form ends -->
+</div>
+
+{% endblock %}
