@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib.auth.models import User     #user model
+from django.contrib import messages           # for flashing messages
 
 # Create your views here.
 
@@ -60,9 +62,34 @@ def update_recp(request, id):
     return render(request, 'update.html', {'update_recipe': queryset})
 
 
-def user_login(request):
-    return redirect('/')
+# def user_login(request):
+#     return redirect('/')
 
 
-def user_signup(request):
-    return redirect('/')
+# def user_signup(request):
+    if request.method == 'POST':
+        data = request.POST
+        fullname = data.get('fullname')
+        username = data.get('username')
+        password = data.get('password')
+
+        user = User.objects.filter(username = username)
+
+        if user.exists():
+            messages.info(request, 'username already exists!')
+            return redirect()
+
+        user = User.objects.create(
+            fullname = fullname,
+            username = username
+        )
+
+        user.set_password(password)   #for encrypting the password (hash password)
+
+        user.save()
+
+        messages.info(request, 'Your account has been created successfully. You may now login!')
+
+        return redirect('/')
+
+    return render(request, 'signin.html')
