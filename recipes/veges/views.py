@@ -58,3 +58,11 @@ def update_recp(request, id):
         return redirect('/user/')
 
     return render(request, 'update.html', {'update_recipe': queryset})
+
+
+def user_login(request):
+    return redirect('/')
+
+
+def user_signup(request):
+    return redirect('/')
