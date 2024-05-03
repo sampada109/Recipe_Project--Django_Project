@@ -1,0 +1,33 @@
+<!-- Sign-Up Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-column">
+                <div class="d-flex align-items-center w-100 mb-3">
+                    <h3 class="modal-title" id="signupModalLabel" style="flex-grow: 1;">Create Account</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div>
+                    <h6>New recipes are like hidden treasures. Let's discover yours!"🍱</h6>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Include your sign-up form template here -->
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="id_username" required>
+                    </div>
+
+                    <div>
+                        <p>Already have any account ? <a href="" data-bs-target="#loginModal" data-bs-toggle="modal">login</a></p>
+                    </div>
+
+                    <!-- Add other fields for signup, such as email and password -->
+                    <button type="submit" class="btn btn-success">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

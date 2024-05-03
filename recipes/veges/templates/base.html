@@ -63,8 +63,10 @@
                         </form>
                     </div>
                     <div class="nav-right">
-                        <button class="btn btn-outline-success" type="submit">Login</button>
-                        <button class="btn btn-outline-success" type="submit">Sign Up</button>
+                        {% include 'login.html' %}
+                        <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        {% include 'signin.html' %}
+                        <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button>
                     </div>
                 </div>
             </div>
