@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User     #user model
 from django.contrib import messages           # for flashing messages
-from django.contrib.auth import authenticate, login   # for user authentication , mantaining login sessions 
+from django.contrib.auth import authenticate, login , logout   # for user authentication , mantaining login sessions, logout session
 
 # Create your views here.
 
@@ -61,6 +61,11 @@ def update_recp(request, id):
         return redirect('/user/')
 
     return render(request, 'update.html', {'update_recipe': queryset})
+
+
+def user_logout(request):    #18th
+    logout(request)
+    return redirect('/')
 
 
 def user_login(request):
