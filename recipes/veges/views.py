@@ -62,25 +62,27 @@ def update_recp(request, id):
     return render(request, 'update.html', {'update_recipe': queryset})
 
 
-# def user_login(request):
-#     return redirect('/')
+def user_login(request):
+    return render(request, 'login.html')
 
 
-# def user_signup(request):
+def user_signup(request):
     if request.method == 'POST':
         data = request.POST
-        fullname = data.get('fullname')
+        first_name = data.get('firstname')
+        last_name = data.get('lastname')
         username = data.get('username')
         password = data.get('password')
 
         user = User.objects.filter(username = username)
 
         if user.exists():
-            messages.info(request, 'username already exists!')
-            return redirect()
+            messages.error(request, 'username already exists!')
+            return redirect('/user_signup/')
 
         user = User.objects.create(
-            fullname = fullname,
+            first_name = first_name,
+            last_name = last_name,
             username = username
         )
 
@@ -88,8 +90,8 @@ def update_recp(request, id):
 
         user.save()
 
-        messages.info(request, 'Your account has been created successfully. You may now login!')
+        messages.success(request, 'Your account has been created successfully. You may now login!')
 
-        return redirect('/')
+        return redirect('/user_login/')
 
     return render(request, 'signin.html')

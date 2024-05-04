@@ -1,36 +1,57 @@
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header d-flex flex-column">
-                <div class="d-flex align-items-center w-100 mb-3">
-                    <h3 class="modal-title" id="loginModalLabel" style="flex-grow: 1;">Login</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div>
-                    <h6>Bring your flavors to the table and share your recipe with the world.🍽️</h6>
-                </div>
-            </div>
-            <div class="modal-body">
-                <!-- Include your login form template here -->
-                <form method="post" action="">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="id_username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" id="id_username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="id_password" required>
-                    </div>
-                    
-                    <div>
-                        <p>Don't have any account ? <a href="" data-bs-target="#signupModal" data-bs-toggle="modal">create account</a></p>
-                    </div>
+{% extends 'base.html' %}
 
-                    <button type="submit" class="btn btn-success">Login</button>
-                </form>
+{% block title %} | User {% endblock %}
+
+
+{% block hero-content %}
+<div class="container mt-5 p-2 text-white">
+
+
+    <!--form start-->
+    <div class="container mt-5 mb-5">
+        <form class="col-6 mx-auto card p-4 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <h5 class="mt-1">Bring your flavors to the table and share your recipe with the world.🍽️</h5>
+
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                <div
+                    class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
             </div>
-        </div>
+            {% endif %}
+
+            <hr class="mb-4">
+
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="id_username" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="id_password" required>
+            </div>
+
+            <div>
+                <p>Don't have an account ? <a href="{% url 'user_signup' %}">create account</a></p>
+            </div>
+
+            <button type="submit" class="btn btn-success">Login</button>
+        </form>
     </div>
+    <!--form ends-->
+
+    {{ recipes }}
+
 </div>
+{% endblock %}
+
+
+{% block main-content %}
+
+{% endblock %}

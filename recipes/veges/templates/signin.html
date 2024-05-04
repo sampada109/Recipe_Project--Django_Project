@@ -1,33 +1,64 @@
-<!-- Sign-Up Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header d-flex flex-column">
-                <div class="d-flex align-items-center w-100 mb-3">
-                    <h3 class="modal-title" id="signupModalLabel" style="flex-grow: 1;">Create Account</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div>
-                    <h6>New recipes are like hidden treasures. Let's discover yours!"🍱</h6>
-                </div>
-            </div>
-            <div class="modal-body">
-                <!-- Include your sign-up form template here -->
-                <form method="post" action="">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="id_username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" id="id_username" required>
-                    </div>
+{% extends 'base.html' %}
 
-                    <div>
-                        <p>Already have any account ? <a href="" data-bs-target="#loginModal" data-bs-toggle="modal">login</a></p>
-                    </div>
+{% block title %} | User {% endblock %}
 
-                    <!-- Add other fields for signup, such as email and password -->
-                    <button type="submit" class="btn btn-success">Sign Up</button>
-                </form>
+
+{% block hero-content %}
+<div class="container p-2 text-white">
+
+
+    <!--form start-->
+    <div class="container mt-5 mb-5">
+        <form class="col-7 mx-auto card p-4 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Create Account</h2>
+            <h5 class="mt-1">New recipes are like hidden treasures. Let's discover yours!🧑🏻‍🍳</h5>
+            <hr class="mb-4">
+
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                <div
+                    class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
             </div>
-        </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label for="id_firstname" class="form-label">First Name</label>
+                <input type="text" name="firstname" class="form-control" id="id_firstname" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_lastname" class="form-label">Last Name</label>
+                <input type="text" name="lastname" class="form-control" id="id_lastname" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="id_username" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="id_password" required>
+            </div>
+
+            <div>
+                <p>Already have an account ? <a href="{% url 'user_login' %}">login</a></p>
+            </div>
+
+            <button type="submit" class="btn btn-success">Create Account</button>
+        </form>
     </div>
+    <!--form ends-->
+
+    {{ recipes }}
+
 </div>
+{% endblock %}
+
+
+{% block main-content %}
+
+{% endblock %}
