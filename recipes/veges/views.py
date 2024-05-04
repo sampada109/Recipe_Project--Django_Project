@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.models import User     #user model
 from django.contrib import messages           # for flashing messages
 from django.contrib.auth import authenticate, login , logout   # for user authentication , mantaining login sessions, logout session
+from django.contrib.auth.decorators import login_required      #login required for users page as it will prevent anyone to access the users page
 
 # Create your views here.
 
@@ -11,6 +12,8 @@ def home(request):
     return render(request, 'home.html')    #4th commit adding function for home page
 
 
+
+@login_required(login_url="/user_login/")     #20th   preventing users page from indirect access
 def users(request):
     if request.method == 'POST':
         data = request.POST
