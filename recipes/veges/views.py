@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User     #user model
 from django.contrib import messages           # for flashing messages
+from django.contrib.auth import authenticate, login   # for user authentication , mantaining login sessions 
 
 # Create your views here.
 
@@ -63,6 +64,25 @@ def update_recp(request, id):
 
 
 def user_login(request):
+    if request.method == 'POST':         #17th
+        data = request.POST
+        username = data.get('username')
+        password = data.get('password')
+
+        if not User.objects.filter(username = username):     #check if username exist or not
+            messages.error(request, 'username does not exist!')   #if not exist
+            return redirect('/user_login/')
+        
+        user = authenticate(username = username , password = password)   # authenticate if username with coorect password
+
+        if user is None:
+            messages.error(request, 'Invalid password!')   #if username and password does not match
+            return redirect('/user_login/')
+        else:
+            login(request, user)    #if user has correct password then login user and mantain session
+            return redirect('/user/')
+
+
     return render(request, 'login.html')
 
 
