@@ -37,13 +37,15 @@ def users(request):
     return render(request, 'user.html' , {'recipes': queryset})    #5th commit adding users page
 
 
-
+@login_required(login_url="/user_login/")     #21th   preventing users page from indirect access
 def delete_recp(request, id):
     queryset = recipes.objects.get(id = id)
     queryset.delete()
     return redirect('/user/')
 
 
+
+@login_required(login_url="/user_login/")     #21th   preventing users page from indirect access
 def update_recp(request, id):
     queryset = recipes.objects.get(id = id)
     context = {'update_recipe': queryset}
@@ -123,3 +125,9 @@ def user_signup(request):
         return redirect('/user_login/')
 
     return render(request, 'signin.html')
+
+
+
+
+def user_profile(request):
+    return render(request, 'user_profile.html')
