@@ -7,6 +7,7 @@
 html, body{
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .main{
@@ -48,7 +49,6 @@ html, body{
 }
 
 .hero-section p{
-    /* width: 70%; */
     margin-top: 15px;
     color: white;
 }
@@ -56,17 +56,17 @@ html, body{
 
 
 
+
 /* 2nd page  */
 
-.different-cuzine{
-    height: 80vh;
-    width: 100vw;
-    /* margin-top: 70px; */
-    background-color:cadetblue;
+.main-content{
+    width: 100%;
+    /* background-color:greenyellow; */
 }
 
+
 .different-cuzine .container{
-    background-color:bisque;
+    /* background-color:bisque; */
     display: flex;
     align-items: center;
     justify-content:space-evenly;
@@ -74,11 +74,11 @@ html, body{
 }
 
 .different-cuzine .container .headings{
-    background-color:crimson;
+    /* background-color:crimson; */
 }
 
-.food-category{
-    background-color:darksalmon;
+.food-category , .popular-recipe, .recent-recipe, .recipe-ad{
+    /* background-color:darksalmon; */
     width: 100%;
 }
 
@@ -86,5 +86,41 @@ html, body{
 
 
 
-/* user page  */
+/* footer  */
+footer{
+    bottom: 0;
+}
 
+footer .card{
+    position: relative;
+    height: 250px;
+}
+
+footer .card .card-img{
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+footer .card .footer-overlay{
+    background-color: rgba(30, 29, 29, 0.594);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+footer .card-img-overlay .left-footer{
+    width: 55%;
+    padding: 10px;
+}
+
+footer .card-img-overlay .right-footer{
+    width: 35%;
+    padding: 10px;
+}
+
+footer .card-img-overlay .right-footer div i{
+    margin-right: 12px;
+}

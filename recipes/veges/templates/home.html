@@ -6,17 +6,17 @@
 {% block hero-content %}
 
 <!-- hero section start -->
-<div class="container hero-section">
-    <h1 class="display-1">Discover Delicious Recipes for Every Taste</h1>
-    <p class="lead">Welcome to our culinary haven! Explore a world of flavors with our carefully curated
-        recipes, perfect for
-        home cooks and food enthusiasts alike. From quick and easy weeknight dinners to elaborate weekend
-        feasts, we offer a variety of recipes to satisfy every craving. Start your culinary journey today and
-        unlock the secrets of mouthwatering dishes that will impress your family and friends!"
-        <br>
-        Feel free to adjust the heading and paragraph to better suit the style and tone of your project. Let me
-        know if there's anything else I can help you with!
-    </p>
+<div class="container hero-section" style="height: 80vh;">
+  <h1 class="display-1">Discover Delicious Recipes for Every Taste</h1>
+  <p class="lead">Welcome to our culinary haven! Explore a world of flavors with our carefully curated
+    recipes, perfect for
+    home cooks and food enthusiasts alike. From quick and easy weeknight dinners to elaborate weekend
+    feasts, we offer a variety of recipes to satisfy every craving. Start your culinary journey today and
+    unlock the secrets of mouthwatering dishes that will impress your family and friends!"
+    <br>
+    Feel free to adjust the heading and paragraph to better suit the style and tone of your project. Let me
+    know if there's anything else I can help you with!
+  </p>
 </div>
 <!-- hero section end -->
 
@@ -27,20 +27,172 @@
 {% block main-content %}
 
 <!-- different cuzine start -->
-<!-- <div class="different-cuzine">
-        <div class="container">
-            <div class="headings">
-                <h1>Find Your Next Favorite Recipe</h1>
-                <h2>Search for Recipes and Share Your Own</h2>
-            </div>
-            <div class="food-category">
-                <h3>From Sunrise to Sunset: Recipes for Every Meal</h3>
-                <div class="category-img">
-                  
-                </div>
-            </div>
+<div class="different-cuzine p-5 bg-body-tertiary">
+  <div class="container p-5">
+    <div class="headings">
+      <h1 class="lead display-4">Find Your Next Favorite Recipe</h1>
+      <!-- <h3 class="my-4">Search for Recipes and Share Your Own</h3> -->
+    </div>
+
+
+    <div class="food-category my-5 py-4">
+      <h3 class="text-center mt-3 mb-5">From Sunrise to Sunset: Recipes for Every Meal</h3>
+      <div class="category-img mt-5 d-flex align-items-center justify-content-evenly">
+        <div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
+          <!-- Image -->
+          <img
+            src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="img-fluid" style="width: 100%; height: auto; object-fit: cover; object-position: center;"
+            alt="Image">
+
+          <!-- Overlay -->
+          <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(48, 48, 48, 0.205);">
+          </div>
+
+          <!-- text  -->
+          <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+            <h2 class="">Breakfast</h2>
+          </div>
         </div>
-    </div> -->
+
+        <div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
+          <!-- Image -->
+          <img
+            src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="img-fluid" style="width: 100%; height: auto; object-fit: cover; object-position: center;"
+            alt="Image">
+
+          <!-- Overlay -->
+          <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(48, 48, 48, 0.205);">
+          </div>
+
+          <!-- text  -->
+          <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+            <h2 class="">Lunch</h2>
+          </div>
+        </div>
+
+        <div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
+          <!-- Image -->
+          <img
+            src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="img-fluid" style="width: 100%; height: auto; object-fit: cover; object-position: center;"
+            alt="Image">
+
+          <!-- Overlay -->
+          <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(48, 48, 48, 0.205);">
+          </div>
+
+          <!-- text  -->
+          <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+            <h2 class="">Dinner</h2>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="popular-recipe my-5 p-5">
+      <h3 class="my-5">Popular Recipes</h3>
+      <div class="category-img d-flex align-items-center justify-content-evenly">
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="recent-recipe my-5 p-5">
+      <h3 class="my-5">Recently Added Recipes</h3>
+      <div class="category-img d-flex align-items-center justify-content-evenly">
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="recipe-ad my-5 p-5 d-flex align-items-center justify-content-evenly gap-4">
+      <div class="p-2" style="width: 50%;">
+        <img
+          src="https://images.pexels.com/photos/3771106/pexels-photo-3771106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="" style="object-fit: cover; object-position: center; width: 100%; height: auto;">
+      </div>
+      <div class="p-2 text-center" style="width: 50%;">
+        <h3 class="my-5">Search for Recipes and Share Your Own</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo molestias commodi blanditiis placeat
+          quibusdam, aspernatur deleniti consequatur itaque debitis nulla. Lorem ipsum dolor sit amet.</p>
+        <button class="rounded-pill btn btn-success btn-lg my-5 me-3 py-3 px-4">Search Recipe <i
+            class="ri-search-line ms-2"></i></button>
+        <button class="rounded-pill btn btn-success btn-lg my-5 ms-4 py-3 px-4">Share Recipe <i
+            class="ri-share-box-line ms-2"></i></button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 <!-- different cuzine end -->
 
 {% endblock %}

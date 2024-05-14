@@ -14,4 +14,15 @@ class recipes(models.Model):
     recp_img = models.ImageField(upload_to='recipe_img')
     recp_create_date = models.DateTimeField(default=timezone.now)     #21
     recp_last_modified_date = models.DateTimeField(auto_now=True)
-    tags = models.ManyToManyField(tags)    
+    tags = models.ManyToManyField(tags) 
+    ratings = models.DecimalField(max_digits=5 , decimal_places=1, default=0.0)   
+    views = models.PositiveIntegerField(default=0)
+    favourites = models.PositiveIntegerField(default=0)
+
+
+
+class comments(models.Model):      #22
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(recipes, on_delete=models.CASCADE)
+    com_text = models.TextField()
+    com_date = models.DateTimeField(default=timezone.now)
