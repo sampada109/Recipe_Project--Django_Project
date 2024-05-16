@@ -73,9 +73,9 @@ html, body{
     flex-direction: column;
 }
 
-.different-cuzine .container .headings{
-    /* background-color:crimson; */
-}
+/* .different-cuzine .container .headings{
+    background-color:crimson;
+} */
 
 .food-category , .popular-recipe, .recent-recipe, .recipe-ad , .top-rated-recipe{
     /* background-color:darksalmon; */

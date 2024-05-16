@@ -19,6 +19,28 @@ def home(request):
 
 
 
+def filter_recipes(request, filter_type):     #26
+    user = User.objects.all()
+    if filter_type == 'breakfast':
+        filtered = recipes.objects.filter(category__category = 'Breakfast')
+    elif filter_type == 'lunch':
+        filtered = recipes.objects.filter(category__category = 'Lunch')  
+    elif filter_type == 'dinner':
+        filtered = recipes.objects.filter(category__category = 'Dinner')  
+    elif filter_type == 'rated':
+        filtered = recipes.objects.order_by('-ratings')  
+    elif filter_type == 'popular':
+        filtered = recipes.objects.order_by('-views')  
+    elif filter_type == 'recent':
+        filtered = recipes.objects.order_by('-recp_create_date')  
+    else:
+        filtered = recipes.objects.none()    
+
+    return render(request, 'filter_recipe.html', {'user':user, 'filtered':filtered, 'filter_type':filter_type})
+
+
+
+
 @login_required(login_url="/user_login/")     #20th   preventing users page from indirect access
 def users(request):
     if request.method == 'POST':
