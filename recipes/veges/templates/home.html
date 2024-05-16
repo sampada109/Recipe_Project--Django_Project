@@ -113,7 +113,7 @@
                         <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
                       </div>
                       <div class="">
-                        <a href="" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
+                        <a href="{% url 'recipe_detail' recipe.id %}" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
                       </div>
                     </div>
                     <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>
@@ -145,7 +145,7 @@
                     <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
                   </div>
                   <div class="">
-                    <a href="" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
+                    <a href="{% url 'recipe_detail' recipe.id %}" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
                   </div>
                 </div>
                 <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>
@@ -177,7 +177,7 @@
                     <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
                   </div>
                   <div class="">
-                    <a href="" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
+                    <a href="{% url 'recipe_detail' recipe.id %}" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
                   </div>
                 </div>
                 <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>

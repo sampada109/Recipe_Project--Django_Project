@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %} | Home {% endblock %}
+
+
+{% block hero-content %}
+
+<!-- hero section start -->
+<!-- <div class="container hero-section" style="height: 80vh;">
+  <h1 class="display-1">Discover Delicious Recipes for Every Taste</h1>
+  <p class="lead">Welcome to our culinary haven! Explore a world of flavors with our carefully curated
+    recipes, perfect for
+    home cooks and food enthusiasts alike. From quick and easy weeknight dinners to elaborate weekend
+    feasts, we offer a variety of recipes to satisfy every craving. Start your culinary journey today and
+    unlock the secrets of mouthwatering dishes that will impress your family and friends!"
+    <br>
+    Feel free to adjust the heading and paragraph to better suit the style and tone of your project. Let me
+    know if there's anything else I can help you with!
+  </p>
+</div> -->
+<!-- hero section end -->
+
+{% endblock %}
+
+
+
+{% block main-content %}
+
+<!-- container start -->
+<div class="bg-body-tertiary">
+    <div class="container p-5">
+        <h1 class="lead mt-5 mb-4 display-4 text-capitalize">{{ recipe.recp_name }}</h1>
+        <div class="ms-4 mb-3">
+            <div class="mt-4 fs-5 text-secondary d-flex align-items-center gap-5">
+                <p>By- <a href="" class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"> {{ recipe.user.username }} </a> </p>
+                <p class="ms-3">{{ recipe.recp_last_modified_date|date:"F j, Y" }}</p>
+            </div>
+
+            <div>
+                {% for _ in "x"|rjust:recipe.ratings|default:0 %}
+                <i class="me-1 ri-star-fill text-warning fs-4"></i>
+                {% endfor %}
+            </div>
+
+            <div class="mt-3 d-flex align-items-center gap-4">
+                <p><i class="ri-eye-line"></i> {{ recipe.views }}</p>
+                <p><i class="ri-heart-line"></i> {{ recipe.favourites }}</p>
+            </div>
+        </div>
+
+        <div class="my-5">
+            <img src="/media/{{ recipe.recp_img }}" class="img-fluid" alt="">
+        </div>
+
+        <div class="ms-4">
+            <p class="lead" style="letter-spacing: 2px;">{{ recipe.recp_desp }}</p>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="ms-4">
+            <h3>Reviews <small class="text-secondary">n comments</small></h3>
+            
+            <form class="col-8 my-5">
+                <div class="mb-3 d-flex gap-2">
+                    <input placeholder="Write Review.." class="form-control">
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </form>
+
+            <div>
+                <p>comment 1</p>
+                <hr>
+                <p>comment 2</p>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+</div>
+<!-- different cuzine end -->
+
+{% endblock %}

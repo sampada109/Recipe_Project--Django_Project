@@ -40,6 +40,12 @@ def filter_recipes(request, filter_type):     #26
 
 
 
+def recipe_detail(request, id):        #27
+    user = User.objects.all()
+    recipe = recipes.objects.get(id = id)
+    return render(request,'recipe_detail.html', {'user':user, 'recipe':recipe})
+
+
 
 @login_required(login_url="/user_login/")     #20th   preventing users page from indirect access
 def users(request):
