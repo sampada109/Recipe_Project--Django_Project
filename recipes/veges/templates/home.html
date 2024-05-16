@@ -37,8 +37,8 @@
 
     <div class="food-category my-5 py-4">
       <h3 class="text-center mt-3 mb-5">From Sunrise to Sunset: Recipes for Every Meal</h3>
-      <div class="category-img mt-5 d-flex align-items-center justify-content-evenly">
-        <div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
+      <div class="category-img food-category-img mt-5 d-flex align-items-center justify-content-evenly">
+        <a href=""><div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
           <!-- Image -->
           <img
             src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -53,9 +53,9 @@
           <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
             <h2 class="">Breakfast</h2>
           </div>
-        </div>
+        </div></a>
 
-        <div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
+        <a href=""><div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
           <!-- Image -->
           <img
             src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -70,9 +70,9 @@
           <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
             <h2 class="">Lunch</h2>
           </div>
-        </div>
+        </div></a>
 
-        <div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
+        <a href=""><div class="position-relative" style="height: 300px; width: 300px; border-radius: 50%; overflow: hidden;">
           <!-- Image -->
           <img
             src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -87,87 +87,103 @@
           <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
             <h2 class="">Dinner</h2>
           </div>
-        </div>
+        </div></a>
 
       </div>
     </div>
 
 
-    <div class="popular-recipe my-5 p-5">
-      <h3 class="my-5">Popular Recipes</h3>
+    <div class="top-rated popular-recipe my-5 p-5">
+      <div class="d-flex align-items-center justify-content-between">
+        <h3 class="my-5">Top Rated Recipes</h3>
+        <a href="" class="fs-5 link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">see more<i class="ri-arrow-right-up-line"></i></a>
+      </div>
       <div class="category-img d-flex align-items-center justify-content-evenly">
 
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        {% for recipe in top_rated_recipes %}
+            <div class="card ms-4 pt-2 px-2" style="width: 25rem;">
+                <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                    style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
+                    <p class="card-text mb-4 text-secondary" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">{{recipe.recp_desp}}</p>
+                    <div class="d-flex justify-content-between">
+                      <div class="">
+                        <a href="#" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
+                        <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
+                      </div>
+                      <div class="">
+                        <a href="" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
+                      </div>
+                    </div>
+                    <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+
+    <div class="popular-recipe p-5">
+      <div class="d-flex align-items-center justify-content-between">
+        <h3 class="my-5">Popular Recipes</h3>
+        <a href="" class="fs-5 link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">see more<i class="ri-arrow-right-up-line"></i></a>
+      </div>
+      <div class="category-img d-flex align-items-center justify-content-evenly">
+
+        {% for recipe in popular_recipes %}
+          <div class="card ms-4 pt-2 px-2" style="width: 25rem;">
+            <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
+                <p class="card-text mb-4 text-secondary" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">{{recipe.recp_desp}}</p>
+                <div class="d-flex justify-content-between">
+                  <div class="">
+                    <a href="#" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
+                    <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
+                  </div>
+                  <div class="">
+                    <a href="" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
+                  </div>
+                </div>
+                <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>
+            </div>
           </div>
-        </div>
-
-
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+        {% endfor %}
 
       </div>
     </div>
 
 
     <div class="recent-recipe my-5 p-5">
-      <h3 class="my-5">Recently Added Recipes</h3>
+      <div class="d-flex align-items-center justify-content-between">
+        <h3 class="my-5">Recently Added Recipes</h3>
+        <a href="" class="fs-5 link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">see more<i class="ri-arrow-right-up-line"></i></a>
+      </div>
       <div class="category-img d-flex align-items-center justify-content-evenly">
 
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        {% for recipe in recently_added_recipes %}
+          <div class="card ms-4 pt-2 px-2" style="width: 25rem;">
+            <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
+                <p class="card-text mb-4 text-secondary" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">{{recipe.recp_desp}}</p>
+                <div class="d-flex justify-content-between">
+                  <div class="">
+                    <a href="#" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
+                    <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
+                  </div>
+                  <div class="">
+                    <a href="" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
+                  </div>
+                </div>
+                <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>
+            </div>
           </div>
-        </div>
-
-
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+        {% endfor %}
 
       </div>
     </div>

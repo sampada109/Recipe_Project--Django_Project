@@ -77,9 +77,22 @@ html, body{
     /* background-color:crimson; */
 }
 
-.food-category , .popular-recipe, .recent-recipe, .recipe-ad{
+.food-category , .popular-recipe, .recent-recipe, .recipe-ad , .top-rated-recipe{
     /* background-color:darksalmon; */
     width: 100%;
+}
+
+
+/* food category image  */
+.food-category-img img{
+    transition: transform 1s, filter 2s ease-in-out;
+    filter: blur(1.5px);
+    transform: scale(1.2);
+}
+
+.food-category-img :hover img{
+    filter: blur(0);
+    transform: scale(1);
 }
 
 

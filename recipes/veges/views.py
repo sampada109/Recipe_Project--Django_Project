@@ -9,7 +9,13 @@ from django.contrib.auth.decorators import login_required      #login required f
 
 
 def home(request):
-    return render(request, 'home.html')    #4th commit adding function for home page
+    user = User.objects.all()
+    top_rated_recipes = recipes.objects.order_by('-ratings')[:3]    #25
+    popular_recipes = recipes.objects.order_by('-views')[:3]
+    recently_added_recipes = recipes.objects.order_by('-recp_create_date')[:3]
+    return render(request, 'home.html', {'user':user, 'top_rated_recipes': top_rated_recipes, 
+                                          'popular_recipes': popular_recipes, 
+                                          'recently_added_recipes': recently_added_recipes})    #4th commit adding function for home page
 
 
 
