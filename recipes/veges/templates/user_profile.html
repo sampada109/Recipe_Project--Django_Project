@@ -1,15 +1,75 @@
 {% extends 'base.html' %}
 
-{% block title %} | Profile {% endblock %}
-
+{% block title %} | {{ filter_type }} recipes {% endblock %}
 
 
 {% block hero-content %}
-<div class="container mt-5 d-flex align-items-center justify-content-center">
 
-    <div class="card col-10">
+{% endblock %}
 
+
+
+{% block main-content %}
+
+<!-- contain start -->
+<div class="bg-body-tertiary">
+    <div class="container p-5">
+        <div class="d-flex align-items-center ms-5 gap-5">
+            <div style="width: 250px; height: 250px; border-radius: 50%; overflow: hidden;" class="bg-warning">
+                <img
+                src="/media/{{ usr_profile.profile_img }}"
+                class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; object-position:center;"
+                alt="Image">
+            </div>
+            <div class="ms-5">
+                <h2 class="mb-3">{{ user.username }}</h2>
+                <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <div>
+            <div>
+                <h3>Recipes Shared By {{ user.username }}</h3>
+            </div>
+
+            <div class="row gap-4">
+    
+                {% for recipe in recipe %}
+                <div class="card col-2 my-5 pt-2 px-2" style="width: 25rem;">
+                    <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                        style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
+                        <p class="card-text mb-4 text-secondary"
+                            style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">
+                            {{recipe.recp_desp}}</p>
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <a href="{% url 'user_profile' user.username %}" class="btn btn-success me-1"
+                                    style="border-radius: 50%; width: 40px; height: 40px;">{{ user.username|slice:":1" }}</a>
+                                <a href="{% url 'user_profile' user.username %}"
+                                    class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ user.username }}</a>
+                            </div>
+                            <div class="">
+                                <a href="{% url 'recipe_detail' recipe.id %}"
+                                    class="fs-3 text-decoration-none link-warning"><i
+                                        class="ri-arrow-right-up-line"></i></a>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-secondary">{{ recipe.recp_create_date|date:"F j, Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+    
+            </div>
+        </div>
     </div>
 
 </div>
+
+
+<!-- container end -->
+
 {% endblock %}

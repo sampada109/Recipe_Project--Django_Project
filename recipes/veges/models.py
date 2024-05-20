@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User      #for user data
 from django.utils import timezone
+from django.db.models.signals import post_save     #A signal provided by Django that is sent at the end of the save method of a model.
+from django.dispatch import receiver               # A decorator that connects the create_user_profile function to the post_save signal of the User model.
 
 # Create your models here.
 
@@ -34,3 +36,14 @@ class comments(models.Model):      #22
     recipe = models.ForeignKey(recipes, on_delete=models.CASCADE)
     com_text = models.TextField()
     com_date = models.DateTimeField(default=timezone.now)
+
+
+class Profile(models.Model):     #28
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    profile_img = models.ImageField(upload_to='profile_img', default='profile_img/default_profile_img.png', blank=True, null=True)
+
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)

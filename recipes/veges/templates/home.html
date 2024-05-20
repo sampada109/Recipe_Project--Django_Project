@@ -109,8 +109,8 @@
                     <p class="card-text mb-4 text-secondary" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">{{recipe.recp_desp}}</p>
                     <div class="d-flex justify-content-between">
                       <div class="">
-                        <a href="#" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
-                        <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
+                        <a href="{% url 'user_profile' recipe.user.username %}" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
+                        <a href="{% url 'user_profile' recipe.user.username %}" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
                       </div>
                       <div class="">
                         <a href="{% url 'recipe_detail' recipe.id %}" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
@@ -141,8 +141,8 @@
                 <p class="card-text mb-4 text-secondary" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">{{recipe.recp_desp}}</p>
                 <div class="d-flex justify-content-between">
                   <div class="">
-                    <a href="#" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
-                    <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
+                    <a href="{% url 'user_profile' recipe.user.username %}" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
+                    <a href="{% url 'user_profile' recipe.user.username %}" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
                   </div>
                   <div class="">
                     <a href="{% url 'recipe_detail' recipe.id %}" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>
@@ -173,8 +173,8 @@
                 <p class="card-text mb-4 text-secondary" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; ">{{recipe.recp_desp}}</p>
                 <div class="d-flex justify-content-between">
                   <div class="">
-                    <a href="#" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
-                    <a href="#" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
+                    <a href="{% url 'user_profile' recipe.user.username %}" class="btn btn-success me-1" style="border-radius: 50%; width: 40px; height: 40px;">{{ recipe.user.username|slice:":1" }}</a>
+                    <a href="{% url 'user_profile' recipe.user.username %}" class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ recipe.user.username }}</a>
                   </div>
                   <div class="">
                     <a href="{% url 'recipe_detail' recipe.id %}" class="fs-3 text-decoration-none link-warning"><i class="ri-arrow-right-up-line"></i></a>

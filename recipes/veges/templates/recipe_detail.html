@@ -32,7 +32,7 @@
         <h1 class="lead mt-5 mb-4 display-4 text-capitalize">{{ recipe.recp_name }}</h1>
         <div class="ms-4 mb-3">
             <div class="mt-4 fs-5 text-secondary d-flex align-items-center gap-5">
-                <p>By- <a href="" class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"> {{ recipe.user.username }} </a> </p>
+                <p>By- <a href="{% url 'user_profile' recipe.user.username %}" class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"> {{ recipe.user.username }} </a> </p>
                 <p class="ms-3">{{ recipe.recp_last_modified_date|date:"F j, Y" }}</p>
             </div>
 

@@ -47,6 +47,17 @@ def recipe_detail(request, id):        #27
 
 
 
+#user profile page
+def user_profile(request, username):
+    user = User.objects.get(username = username)
+    usr_profile = Profile.objects.get(user = user)
+    recipe = recipes.objects.filter(user = user)
+
+    return render(request, 'user_profile.html', {'user':user, 'usr_profile':usr_profile, 'recipe':recipe})
+
+
+
+
 @login_required(login_url="/user_login/")     #20th   preventing users page from indirect access
 def users(request):
     if request.method == 'POST':
@@ -162,6 +173,3 @@ def user_signup(request):
 
 
 
-
-def user_profile(request):
-    return render(request, 'user_profile.html')
