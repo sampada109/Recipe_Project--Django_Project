@@ -56,7 +56,7 @@
                                     {{ request.user.username|slice:":1" }}
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                                  <li><a class="dropdown-item" href="{% url 'user_profile' request.user.username %}">Profile</a></li>
                                   <li><hr class="dropdown-divider"></li>
                                   <li><a class="dropdown-item" href="{% url 'user_logout' %}">logout</a></li>
                                 </ul>

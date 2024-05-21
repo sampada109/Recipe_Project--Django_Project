@@ -57,6 +57,71 @@ def user_profile(request, username):
 
 
 
+# edit user profile
+@login_required(login_url="/user_login/")
+def edit_profile(request, username):
+    if request.user.username != username:       #only authorized user can have access
+        return redirect('user_login')
+    
+    user = User.objects.get(username = username)
+    user_profile = Profile.objects.get(user = user)
+
+    if request.method == 'POST':
+        data = request.POST
+        profile_img = request.FILES.get('profile_img')
+        username = data.get('username')
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+
+        user.username = username
+        user.first_name = first_name
+        user.last_name = last_name
+
+        if profile_img:
+            user_profile.profile_img = profile_img
+
+        user.save()
+        user_profile.save()
+        messages.success(request, 'Profile Edited successfully!')
+        return redirect('user_profile', username=user.username)
+    
+    return render(request, 'edit_profile.html', {'user':user, 'user_profile':user_profile})
+
+
+# edit user password
+@login_required(login_url="/user_login/")
+def change_password(request, username):
+    if request.user.username != username:       #only authorized user have access
+        return redirect('user_login')
+    
+    user = User.objects.get(username = username)
+
+    if request.method == 'POST':
+        data = request.POST
+        current_password = data.get('current_password')
+        new_password = data.get('new_password')
+
+        # Check if current_password is correct
+        if not user.check_password(current_password):
+            messages.error(request, 'Your current password is Incorrect!')
+            return redirect('change_password', username=user.username)
+        else:
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, 'Password Changed successfully!')
+
+        # Authenticate user with the new password and log in again
+        user = authenticate(username=user.username, password=new_password)
+        if user is not None:
+            login(request, user)
+
+        return redirect('user_profile', username=user.username)
+    
+    return render(request, 'edit_password.html')
+
+
+
+
 
 @login_required(login_url="/user_login/")     #20th   preventing users page from indirect access
 def users(request):
