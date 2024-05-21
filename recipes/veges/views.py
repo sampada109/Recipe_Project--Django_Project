@@ -18,7 +18,7 @@ def home(request):
                                           'recently_added_recipes': recently_added_recipes})    #4th commit adding function for home page
 
 
-
+#filtering recipes
 def filter_recipes(request, filter_type):     #26
     user = User.objects.all()
     if filter_type == 'breakfast':
@@ -40,10 +40,13 @@ def filter_recipes(request, filter_type):     #26
 
 
 
+#recipe detail page
 def recipe_detail(request, id):        #27
     user = User.objects.all()
     recipe = recipes.objects.get(id = id)
-    return render(request,'recipe_detail.html', {'user':user, 'recipe':recipe})
+    profile = Profile.objects.get(user = recipe.user)
+    comment = comments.objects.filter(recipe=recipe).order_by('-com_date')
+    return render(request,'recipe_detail.html', {'user':user, 'recipe':recipe, 'comment':comment, 'profile':profile})
 
 
 
@@ -88,7 +91,7 @@ def edit_profile(request, username):
     return render(request, 'edit_profile.html', {'user':user, 'user_profile':user_profile})
 
 
-# edit user password
+# edit password
 @login_required(login_url="/user_login/")
 def change_password(request, username):
     if request.user.username != username:       #only authorized user have access
@@ -122,7 +125,7 @@ def change_password(request, username):
 
 
 
-
+#user page
 @login_required(login_url="/user_login/")     #20th   preventing users page from indirect access
 def users(request):
     if request.method == 'POST':
@@ -147,6 +150,8 @@ def users(request):
     return render(request, 'user.html' , {'recipes': queryset})    #5th commit adding users page
 
 
+
+#delete recipe 
 @login_required(login_url="/user_login/")     #21th   preventing users page from indirect access
 def delete_recp(request, id):
     queryset = recipes.objects.get(id = id)
@@ -155,6 +160,7 @@ def delete_recp(request, id):
 
 
 
+#update recipe
 @login_required(login_url="/user_login/")     #21th   preventing users page from indirect access
 def update_recp(request, id):
     queryset = recipes.objects.get(id = id)
@@ -178,11 +184,14 @@ def update_recp(request, id):
     return render(request, 'update.html', {'update_recipe': queryset})
 
 
+
+#logout
 def user_logout(request):    #18th
     logout(request)
     return redirect('/')
 
 
+#login
 def user_login(request):
     if request.method == 'POST':         #17th
         data = request.POST
@@ -206,6 +215,7 @@ def user_login(request):
     return render(request, 'login.html')
 
 
+#sign-in
 def user_signup(request):
     if request.method == 'POST':
         data = request.POST

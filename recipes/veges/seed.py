@@ -3,7 +3,7 @@ import random
 from faker import Faker
 from django.conf import settings
 from django.contrib.auth.models import User
-from .models import tags, recp_category, recipes
+from .models import tags, recp_category, recipes, comments
 
 fake = Faker()
 
@@ -74,6 +74,28 @@ def generate_fake_recipes(n):
 
     except Exception as e:
         print(e)    
+
+
+
+# generated fake comments
+def generate_fake_comment():       #30
+    try:
+        user_obj = User.objects.all()
+        recp_obj = recipes.objects.all()
+        for recipe in recp_obj:
+            num = random.randint(0,6)
+            for _ in range(num):
+                text = fake.text(max_nb_chars=200)
+                user = random.choice(user_obj)
+                comment = comments.objects.create(
+                    recipe = recipe,
+                    user = user,
+                    com_text = text
+                )
+    except Exception as e:
+        print(e)
+
+
 
 
 
