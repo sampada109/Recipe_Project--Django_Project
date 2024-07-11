@@ -22,11 +22,11 @@ def home(request):
 def filter_recipes(request, filter_type):     #26
     user = User.objects.all()
     if filter_type == 'breakfast':
-        filtered = recipes.objects.filter(category__category = 'Breakfast')
+        filtered = recipes.objects.filter(category__category__iexact = 'Breakfast').order_by('-recp_last_modified_date')
     elif filter_type == 'lunch':
-        filtered = recipes.objects.filter(category__category = 'Lunch')  
+        filtered = recipes.objects.filter(category__category__iexact = 'Lunch').order_by('-recp_last_modified_date') 
     elif filter_type == 'dinner':
-        filtered = recipes.objects.filter(category__category = 'Dinner')  
+        filtered = recipes.objects.filter(category__category__iexact = 'Dinner').order_by('-recp_last_modified_date')  
     elif filter_type == 'rated':
         filtered = recipes.objects.order_by('-ratings')  
     elif filter_type == 'popular':
@@ -133,18 +133,34 @@ def users(request):
         recp_img = request.FILES.get('recp_img')
         recp_name = data.get('recp_name')
         recp_desp = data.get('recp_desp')
-        # print(recp_name, recp_desp, recp_img)
+        recp_category_name = data.get('recp_catg')
+        recp_tags = data.get('recp_tags')
+        print(recp_name, recp_desp, recp_img, recp_category_name, recp_tags)
+
+        tag_list = recp_tags.split(',')
+        tag_list = [tag.strip() for tag in recp_tags.split(',')]
+        print(tag_list)
+
+        # Get or create the category
+        ctg, created = recp_category.objects.get_or_create(category=recp_category_name)
 
         # adding to data model
-        recipes.objects.create(
+        recipe = recipes.objects.create(
+            user = request.user,
             recp_name = recp_name,
             recp_desp = recp_desp,
-            recp_img = recp_img
+            recp_img = recp_img,
+            category = ctg
         )
+        for tag_name in tag_list:
+            tg, created = Tags.objects.get_or_create(tag=tag_name)
+            recipe.tags.add(tg)
+
+        print('added--')
 
         return redirect('/user/')
     
-    queryset = recipes.objects.all()
+    queryset = recipes.objects.filter(user = request.user)
     context = {'recipes': queryset}
     
     return render(request, 'user.html' , {'recipes': queryset})    #5th commit adding users page

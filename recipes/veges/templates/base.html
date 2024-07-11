@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
+<body class="bg-danger">
 
     <div class="main">
         <div class="background-img"></div>
@@ -26,47 +26,45 @@
 
 
         <!-- navbar start  -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow px-5">
-            <div class="container-fluid px-5">
-                <a class="navbar-brand" href="{% url 'home' %}">Culinary Haven</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-flex d-flex justify-content-between" id="navbarSupportedContent">
-                    <div class="nav-left">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="nav-center">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                    <div class="nav-right">
-                        {% if request.user.is_authenticated %}
-                            <!-- <a href="{% url 'user_logout' %}" class="btn btn-outline-warning">logout</a> -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-success rounded-circle d-flex align-items-center justify-content-center fw-medium fs-3 shadow" style="width: 40px; height: 40px;" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ request.user.username|slice:":1" }}
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                  <li><a class="dropdown-item" href="{% url 'user_profile' request.user.username %}">Profile</a></li>
-                                  <li><hr class="dropdown-divider"></li>
-                                  <li><a class="dropdown-item" href="{% url 'user_logout' %}">logout</a></li>
-                                </ul>
-                              </div>
-                        {% else %}
-                            <a href="{% url 'user_login' %}" class="btn btn-outline-primary">Login</a>
-                            <a href="{% url 'user_signup' %}" class="btn btn-outline-warning">Create Account</a>
-                        {% endif %}
-                    </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow px-lg-5">
+            <div class="container-fluid px-md-5 p-2">
+              <a class="navbar-brand" href="{% url 'home' %}">Culinary Haven</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse d-lg-flex justify-content-between" id="navbarSupportedContent">
+                <div class="nav-left mt-3 mt-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    </ul>
                 </div>
+                <div class="nav-center mb-3 mb-lg-0">
+                    <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="nav-right float-end mb-3 mb-lg-0">
+                    {% if request.user.is_authenticated %}
+                        <!-- <a href="{% url 'user_logout' %}" class="btn btn-outline-warning">logout</a> -->
+                        <div class="btn-group dropstart">
+                            <button type="button" class="btn btn-success rounded-circle d-flex align-items-center justify-content-center fw-medium fs-3 shadow" style="width: 40px; height: 40px;" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ request.user.username|slice:":1" }}
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'user_profile' request.user.username %}">Profile</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="{% url 'user_logout' %}">logout</a></li>
+                            </ul>
+                          </div>
+                    {% else %}
+                        <a href="{% url 'user_login' %}" class="btn btn-outline-primary">Login</a>
+                        <a href="{% url 'user_signup' %}" class="btn btn-outline-warning ms-md-2">Create Account</a>
+                    {% endif %}
+                </div>
+              </div>
             </div>
         </nav>
         <!-- navbar ends  -->
@@ -89,34 +87,36 @@
 
 
     {% block footer %}
+
     <!-- footer start -->
     <footer>
-        <div class="card text-bg-dark">
-            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img" alt="">
-            <div class="footer-overlay"></div>
-            <div class="card-img-overlay pt-5 d-flex flex-column align-items-center justify-content-between">
-                <div class="d-flex align-items-center justify-content-evenly gap-3">
-                    <div class="left-footer px-4">
-                        <h5 class="card-title">Culinary Haven</h5>
-                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, eius delectus. Optio, alias dolorem qui autem reprehenderit dolorum illum fugit consectetur repellat, ullam veniam aspernatur sapiente. Assumenda suscipit et alias?</p>
-                    </div>
-                    <div class="right-footer fs-5 d-flex flex-column align-items-center">
-                        <div>
-                            <i class="ri-home-3-fill"></i>
-                            <i class="ri-search-line"></i>
-                            <i class="ri-bowl-fill"></i>
-                        </div>
-                        <div class="mt-2">
-                            <i class="ri-facebook-circle-line"></i>
-                            <i class="ri-instagram-line"></i>
-                            <i class="ri-twitter-x-line"></i>
-                            <i class="ri-youtube-line"></i>
-                        </div>
-                    </div>
-                </div>
-              <p class="card-text text-center">&copy; 2024 Culinary Haven. All rights reserved.</p>
+      <div class="footer-section b-0 mb-0">
+        <div class="footer-bg" ></div>
+        <div class="overlay"></div>
+        
+        <div class="footer-content text-white row p-4 p-md-5 gap-3 flex-column flex-md-row" >
+          <div class="footer-detail col" >
+            <h5 class="fs-3">Culinary Haven</h5>
+            <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, eius delectus. Optio, alias dolorem qui autem reprehenderit dolorum illum fugit consectetur repellat, ullam veniam aspernatur sapiente. Assumenda suscipit et alias?</p>
+          </div>
+
+          <div class="footer-links col fs-5 mt-lg-3 mt-md-5 text-md-center" >
+            <div>
+              <i class="ri-home-3-fill"></i>
+              <i class="ri-search-line"></i>
+              <i class="ri-bowl-fill"></i>
+            </div>
+            <div class="mt-2">
+              <i class="ri-facebook-circle-line"></i>
+              <i class="ri-instagram-line"></i>
+              <i class="ri-twitter-x-line"></i>
+              <i class="ri-youtube-line"></i>
             </div>
           </div>
+          <p class="card-text text-center mt-3 lead fs-6">&copy; 2024 Culinary Haven. All rights reserved.</p>
+        </div>
+
+      </div>
     </footer>
     <!-- footer ends -->
     {% endblock %}

@@ -3,7 +3,7 @@ from .models import *
 
 
 # Register your models here.
-admin.site.register(tags)
+admin.site.register(Tags)
 admin.site.register(recp_category)
 admin.site.register(recipes)
 admin.site.register(comments)

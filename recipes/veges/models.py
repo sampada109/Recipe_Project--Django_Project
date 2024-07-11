@@ -6,7 +6,7 @@ from django.dispatch import receiver               # A decorator that connects t
 
 # Create your models here.
 
-class tags(models.Model):    #21
+class Tags(models.Model):    #21
     tag = models.CharField(max_length=50)
 
 
@@ -23,7 +23,7 @@ class recipes(models.Model):
     recp_img = models.ImageField(upload_to='recipe_img')
     recp_create_date = models.DateTimeField(default=timezone.now)     #21
     recp_last_modified_date = models.DateTimeField(auto_now=True)
-    tags = models.ManyToManyField(tags) 
+    tags = models.ManyToManyField(Tags) 
     category = models.ForeignKey(recp_category, on_delete=models.SET_NULL, null=True, blank=True)
     ratings = models.IntegerField(default=0)   
     views = models.PositiveIntegerField(default=0)
