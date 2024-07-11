@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="bg-danger">
+<body class="bg-body-tertiary">
 
     <div class="main">
         <div class="background-img"></div>
@@ -41,9 +41,9 @@
                     </ul>
                 </div>
                 <div class="nav-center mb-3 mb-lg-0">
-                    <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <form class="d-flex" method="get" action="{% url 'search_recipe' %}">
+                      <input class="form-control me-2" type="search" placeholder="Search" name="search">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
                 <div class="nav-right float-end mb-3 mb-lg-0">
@@ -54,6 +54,8 @@
                                 {{ request.user.username|slice:":1" }}
                             </button>
                             <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'users' %}">Add Recipe</a></li>
+                              <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="{% url 'user_profile' request.user.username %}">Profile</a></li>
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="{% url 'user_logout' %}">logout</a></li>

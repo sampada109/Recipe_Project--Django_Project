@@ -15,4 +15,5 @@ urlpatterns = [
     path('change_password/<str:username>', views.change_password , name='change_password'),
     path('recipes/<str:filter_type>', views.filter_recipes, name='filter_recipes'),
     path('recipe/<int:id>', views.recipe_detail, name='recipe_detail'),
+    path('search_recipe/', views.search_recipe, name='search_recipe'),
 ]

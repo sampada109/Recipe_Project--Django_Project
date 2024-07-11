@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} | {{ filter_type }} recipes {% endblock %}
+{% block title %} | Searched Recipes {% endblock %}
 
 
 {% block hero-content %}
@@ -15,7 +15,12 @@
 <div class="bg-body-tertiary">
     <div class="container p-5">
         <div class="headings">
-            <h1 class="lead display-4">{{ filter_type }} Recipes</h1>
+            {% if query %}
+            <h1 class="lead display-4">Search Result for "{{ query }}"</h1>
+            {% else %}
+            <h1 class="lead display-4">Search Different Recipes</h1>
+            {% endif %}
+
         </div>
 
 
@@ -24,7 +29,7 @@
             
             <div class="row flex-column flex-lg-row gap-lg-4 align-items-center">
       
-              {% for recipe in filtered %}
+              {% for recipe in recipe_list %}
                   <div class="card col-2 my-3 my-lg-5 pt-2 px-2" style="width: 25rem;">
                       <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
                           style="height: 10rem; object-fit: cover; object-position: center;" alt="...">

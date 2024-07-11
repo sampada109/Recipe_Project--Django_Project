@@ -4,6 +4,7 @@ from django.contrib.auth.models import User     #user model
 from django.contrib import messages           # for flashing messages
 from django.contrib.auth import authenticate, login , logout   # for user authentication , mantaining login sessions, logout session
 from django.contrib.auth.decorators import login_required      #login required for users page as it will prevent anyone to access the users page
+from django.db.models import Q    # OR function
 
 # Create your views here.
 
@@ -264,3 +265,19 @@ def user_signup(request):
 
 
 
+# for search request 
+def search_recipe(request):
+    query = request.GET.get('search')
+    print(query)
+    if query != None:
+        recipe_list = recipes.objects.filter(
+            Q(recp_name__icontains=query) | 
+            Q(recp_desp__icontains=query) | 
+            Q(user__username__icontains=query) | 
+            Q(tags__tag__icontains=query) | 
+            Q(category__category__icontains=query)
+        ).distinct()
+    else:
+        recipe_list = recipes.objects.all().order_by('-recp_last_modified_date')
+
+    return render(request, 'search.html', {'recipe_list': recipe_list, 'query': query})

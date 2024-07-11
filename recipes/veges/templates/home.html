@@ -6,7 +6,7 @@
 {% block hero-content %}
 
 <!-- hero section start -->
-<div class="container hero-section p-3 p-sm-0" style="height: 85vh;">
+<div class="container hero-section p-3 mb-5 p-sm-0" style="height: 85vh">
   <h1 class="display-1">Discover Delicious Recipes for Every Taste</h1>
   <p class="lead">Welcome to our culinary haven! Explore a world of flavors with our carefully curated
     recipes, perfect for
@@ -28,7 +28,7 @@
 
 <!-- different cuzine start -->
 <div class="different-cuzine p-lg-5 bg-body-tertiary">
-  <div class="container p-md-5 p-3 bg-warning">
+  <div class="container p-md-5 p-3">
     <div class="headings text-center">
       <h1 class="lead display-4 ">Find Your Next Favorite Recipe</h1>
       <!-- <h3 class="my-4">Search for Recipes and Share Your Own</h3> -->
@@ -98,7 +98,7 @@
         <h3 class="my-5 fs-4">Top Rated Recipes</h3>
         <a href="{% url 'filter_recipes' 'rated' %}" class="fs-5 link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">see more<i class="ri-arrow-right-up-line"></i></a>
       </div>
-      <div class="category-img container-fluid px-md-5 px-lg-0 d-flex flex-column flex-lg-row bg-danger align-items-center justify-content-evenly gap-4 gap-lg-0">
+      <div class="category-img container-fluid px-md-5 px-lg-0 d-flex flex-column flex-lg-row align-items-center justify-content-evenly gap-4 gap-lg-0">
 
         {% for recipe in top_rated_recipes %}
             <div class="card ms-lg-4 pt-2 px-2" style="width: 100%;">
@@ -134,7 +134,7 @@
         <h3 class="my-5 fs-4">Popular Recipes</h3>
         <a href="{% url 'filter_recipes' 'popular' %}" class="fs-5 link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">see more<i class="ri-arrow-right-up-line"></i></a>
       </div>
-      <div class="category-img container-fluid px-md-5 px-lg-0 d-flex flex-column flex-lg-row bg-danger align-items-center justify-content-evenly gap-4 gap-lg-0">
+      <div class="category-img container-fluid px-md-5 px-lg-0 d-flex flex-column flex-lg-row align-items-center justify-content-evenly gap-4 gap-lg-0">
 
         {% for recipe in popular_recipes %}
           <div class="card ms-lg-4 pt-2 px-2" style="width: 100%;">
@@ -170,7 +170,7 @@
         <h3 class="my-5 fs-4">Recently Added Recipes</h3>
         <a href="{% url 'filter_recipes' 'recent' %}" class="fs-5 link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">see more<i class="ri-arrow-right-up-line"></i></a>
       </div>
-      <div class="category-img container-fluid px-md-5 px-lg-0 d-flex flex-column flex-lg-row bg-danger align-items-center justify-content-evenly gap-4 gap-lg-0">
+      <div class="category-img container-fluid px-md-5 px-lg-0 d-flex flex-column flex-lg-row align-items-center justify-content-evenly gap-4 gap-lg-0">
 
         {% for recipe in recently_added_recipes %}
           <div class="card ms-lg-4 pt-2 px-2" style="width: 100%;">
@@ -201,7 +201,7 @@
     </div>
 
 
-    <div class="recipe-ad my-5 p-md-3 p-lg-5 bg-primary row flex-column flex-lg-row gap-lg-4 gap-3">
+    <div class="recipe-ad my-5 p-md-3 p-lg-5 row flex-column flex-lg-row gap-lg-4 gap-3">
       <div class="p-2 col">
         <img
           src="https://images.pexels.com/photos/3771106/pexels-photo-3771106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -211,10 +211,10 @@
         <h3 class="mb-lg-4 mt-lg-5">Search for Recipes and Share Your Own</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo molestias commodi blanditiis placeat
           quibusdam, aspernatur deleniti consequatur itaque debitis nulla. Lorem ipsum dolor sit amet.</p>
-        <button class="rounded-pill btn btn-success btn-sm my-lg-3 me-lg-3 py-3 px-4">Search Recipe <i
-            class="ri-search-line ms-2"></i></button>
-        <button class="rounded-pill btn btn-success btn-sm my-lg-3 ms-lg-4 py-3 px-4">Share Recipe <i
-            class="ri-share-box-line ms-2"></i></button>
+        <a href="{% url 'search_recipe' %}"><button class="rounded-pill btn btn-success btn-sm my-lg-3 me-lg-3 py-3 px-4">Search Recipe <i
+            class="ri-search-line ms-2"></i></button></a>
+        <a href="{% url 'user_signup' %}"><button class="rounded-pill btn btn-success btn-sm my-lg-3 ms-lg-4 py-3 px-4">Share Recipe <i
+            class="ri-share-box-line ms-2"></i></button></a>
       </div>
     </div>
 
