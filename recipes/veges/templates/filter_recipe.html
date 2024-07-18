@@ -26,7 +26,7 @@
       
               {% for recipe in filtered %}
                   <div class="card col-2 my-3 my-lg-5 pt-2 px-2" style="width: 25rem;">
-                      <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                      <img src="{{ recipe.recp_img.url }}" class="card-img-top"
                           style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
                       <div class="card-body">
                           <h5 class="card-title text-success">{{recipe.recp_name}}</h5>

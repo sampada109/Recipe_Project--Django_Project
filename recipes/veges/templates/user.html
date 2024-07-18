@@ -66,7 +66,7 @@
 
             {% for recipe in recipes %}
                 <div class="card mb-5 ms-4 p-2" style="width: 18rem;">
-                    <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                    <img src="{{ recipe.recp_img.url }}" class="card-img-top"
                         style="height: 9rem; object-fit: cover; object-position: center;" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{recipe.recp_name}}</h5>

@@ -47,6 +47,18 @@ def recipe_detail(request, id):        #27
     recipe = recipes.objects.get(id = id)
     profile = Profile.objects.get(user = recipe.user)
     comment = comments.objects.filter(recipe=recipe).order_by('-com_date')
+
+    if request.method == 'POST':
+        comment_txt = request.POST.get('comment')
+        if request.user.is_authenticated:
+            if comment_txt:
+                new_comment = comments(
+                    user = request.user,
+                    recipe = recipe,
+                    com_text = comment_txt
+                )
+                new_comment.save()
+
     return render(request,'recipe_detail.html', {'user':user, 'recipe':recipe, 'comment':comment, 'profile':profile})
 
 

@@ -23,7 +23,7 @@
                 <label for="exampleInputPassword1" class="form-label">Profile Image</label>
                 {% if user_profile.profile_img %}
                 <div class="mb-2" style="width: 8em; height: 8em; border-radius: 50%; overflow: hidden;">
-                    <img src="/media/{{ user_profile.profile_img }}" alt="profile image"
+                    <img src="{{ user_profile.profile_img.url }}" alt="profile image"
                         style="object-fit: cover; object-position: center; width: 100%; height: 100%;">
                 </div>
                 {% endif %}

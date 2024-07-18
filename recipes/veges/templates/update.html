@@ -25,7 +25,7 @@
                 <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
                 {% if update_recipe.recp_img %}
                 <div class="mb-2">
-                    <img src="/media/{{ update_recipe.recp_img }}" alt="Current recipe image"
+                    <img src="{{ update_recipe.recp_img.url }}" alt="Current recipe image"
                         style="max-width: 200px; max-height: 200px;">
                 </div>
                 {% endif %}

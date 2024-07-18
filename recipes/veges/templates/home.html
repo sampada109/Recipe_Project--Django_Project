@@ -102,7 +102,7 @@
 
         {% for recipe in top_rated_recipes %}
             <div class="card ms-lg-4 pt-2 px-2" style="width: 100%;">
-                <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+                <img src="{{ recipe.recp_img.url }}" class="card-img-top"
                     style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
@@ -138,7 +138,7 @@
 
         {% for recipe in popular_recipes %}
           <div class="card ms-lg-4 pt-2 px-2" style="width: 100%;">
-            <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+            <img src="{{ recipe.recp_img.url }}" class="card-img-top"
                 style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
@@ -174,7 +174,7 @@
 
         {% for recipe in recently_added_recipes %}
           <div class="card ms-lg-4 pt-2 px-2" style="width: 100%;">
-            <img src="/media/{{ recipe.recp_img }}" class="card-img-top"
+            <img src="{{ recipe.recp_img.url }}" class="card-img-top"
                 style="height: 10rem; object-fit: cover; object-position: center;" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-success">{{recipe.recp_name}}</h5>
@@ -213,8 +213,13 @@
           quibusdam, aspernatur deleniti consequatur itaque debitis nulla. Lorem ipsum dolor sit amet.</p>
         <a href="{% url 'search_recipe' %}"><button class="rounded-pill btn btn-success btn-sm my-lg-3 me-lg-3 py-3 px-4">Search Recipe <i
             class="ri-search-line ms-2"></i></button></a>
-        <a href="{% url 'user_signup' %}"><button class="rounded-pill btn btn-success btn-sm my-lg-3 ms-lg-4 py-3 px-4">Share Recipe <i
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'users' %}"><button class="rounded-pill btn btn-success btn-sm my-lg-3 ms-lg-4 py-3 px-4">Share Recipe <i
             class="ri-share-box-line ms-2"></i></button></a>
+        {% else %}
+          <a href="{% url 'user_signup' %}"><button class="rounded-pill btn btn-success btn-sm my-lg-3 ms-lg-4 py-3 px-4">Share Recipe <i
+          class="ri-share-box-line ms-2"></i></button></a>
+        {% endif %}
       </div>
     </div>
 
