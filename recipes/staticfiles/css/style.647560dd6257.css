@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.background-img{
+    background-image: url(https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.612);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+.hero-section{
+    margin-top: 50px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-section h1{
+    color: white;
+}
+
+.hero-section p{
+    margin-top: 15px;
+    color: white;
+}
+
+
+
+
+
+/* 2nd page  */
+
+.main-content{
+    width: 100%;
+    /* background-color:greenyellow; */
+}
+
+
+.different-cuzine .container{
+    /* background-color:bisque; */
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+}
+
+
+.food-category , .popular-recipe, .recent-recipe, .recipe-ad , .top-rated-recipe{
+    /* background-color:darksalmon; */
+    width: 100%;
+}
+
+
+/* food category image  */
+.food-category-img img{
+    transition: transform 1s, filter 2s ease-in-out;
+    filter: blur(1.5px);
+    transform: scale(1.2);
+}
+
+.food-category-img :hover img{
+    filter: blur(0);
+    transform: scale(1);
+}
+
+
+
+
+
+/* footer  */
+
+footer{
+    bottom: 0;
+}
+
+.footer-section{
+    position: relative;
+    height: auto;
+}
+
+.footer-bg{
+    background-image: url(https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
